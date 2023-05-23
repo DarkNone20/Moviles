@@ -36,15 +36,13 @@ async function obtenerUsuarioPorNombre(nombreUsuario) {
 // login
 async function login(nombreUsuario, contraseña) {
   const usuario = await Usuario.findOne({ where: { Usuario: nombreUsuario, Contrasena: contraseña } });
-  
+
   if (usuario) {
-    return { mensaje: 'Inicio de sesión exitoso' };
+    return { body: usuario }; // Envolvemos el usuario en un objeto "body"
   } else {
-    throw { error: 'Nombre de usuario o contraseña incorrectos' };
+    throw { message: 'Nombre de usuario o contraseña incorrectos' }; // Cambiamos "error" por "message"
   }
 }
-
-
 
 
 module.exports = {

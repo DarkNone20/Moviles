@@ -114,14 +114,14 @@ async function obtenerUsuarioPorNombre(req, res) {
 }
 //login
 async function login(req, res) {
-  const { Usuario, contrasena } = req.body;
+  const { Usuario, Contrasena } = req.body;
 
   try {
     // Obtener el usuario de la base de datos
     const usuario = await usuarioRepository.obtenerUsuarioPorNombre(Usuario);
 
     // Verificar si el usuario y la contraseña son correctos
-    if (usuario && usuario.Contrasena === contrasena) {
+    if (Usuario && usuario.Contrasena === Contrasena) {
       // Inicio de sesión exitoso
       res.status(200).json({ mensaje: 'Inicio de sesión exitoso' });
     } else {
